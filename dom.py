@@ -25,6 +25,15 @@ class Suman:
         except:
             print('error:CLASS not found !')
 
+    def click_by_xpath(self,xpath_location, url):
+        try:
+            self.driver.get(url)
+            xpath_location = self.driver.find_element(by=By.XPATH, value=xpath_location)
+            if xpath_location:
+                time.sleep(5)
+                xpath_location.click()
+        except:
+            print('error: XPATH not found !')
 s = Suman()
 
 url = "https://www.w3schools.com/"
@@ -32,4 +41,7 @@ id_1 = "w3loginbtn"
 
 class_1 = "w3-hover-text-green"
 
-s.click_link_by_class(class_1,url)
+url_1 = 'https://www.guvi.in'
+xpath_loc = '/html/body/header/nav/div/div/div[2]/div[2]/ul/li[1]/a'
+
+s.click_by_xpath(xpath_loc,url_1)
