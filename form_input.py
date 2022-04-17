@@ -8,6 +8,7 @@ class Suman:
     driver = webdriver.Firefox()
     url = "https://www.google.co.in"
     google_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSd4RqX-DSzSNeFQjgTJU3JNHdurirHORE68VK0_0srHGXgLdQ/viewform"
+    google_images_url = "https://images.google.com"
 
     def form_input(self,input_word):
         self.driver.get(self.url)
@@ -16,6 +17,9 @@ class Suman:
         input.send_keys(input_word)
         search_button = self.driver.find_element(by=By.XPATH, value='/html/body/div[1]/div[3]/form/div[1]/div[1]/div[3]/center/input[1]')
         search_button.click()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        js = "alert('I am Suman ?');"
+        self.driver.execute_script(js)
 
     def google_form(self):
         self.driver.get(self.google_form_url)
@@ -32,6 +36,8 @@ class Suman:
         time.sleep(3)
         submit_button.click()
 
-s= Suman()
+    def google_images(self):
+        pass
 
-print(s.google_form())
+s= Suman()
+print(s.form_input("tensorflow"))
