@@ -18,10 +18,23 @@ class Suman:
     def Price_Flipkart(self):
         price = self.soup.find('div', class_='_30jeq3 _1_WHN1')
         return price.text 
+    
+    def all_data(self):
+        products = []
+        prices = [] 
+
+        for data in self.soup.findAll('div', class_='_3pLy-c row'):
+            names = data.find('div', class_='_4rR01T')
+            price = data.find('div', class_='_30jeq3 _1_WHN1')
+            products.append(names.text)
+            prices.append(price.text)
+        
+        print(products)
+        print("########################################################")
+        print(prices)
 
 
 s = Suman()
 
-print(s.Name_Flipkart())
 
-print(s.Price_Flipkart())
+s.all_data()
